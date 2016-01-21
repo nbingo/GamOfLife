@@ -6,8 +6,8 @@ import java.util.*;
  * @author Nomi Ringach
  * @version 1.0.0
  */
-public class SoupBuilder {
-
+public class SoupBuilder 
+{
 	public static void main(String[] args) throws IOException
 	{
 		Scanner k = new Scanner(System.in);
@@ -26,5 +26,4 @@ public class SoupBuilder {
 		k.close();
 		write.close();
 	}
-
 }
