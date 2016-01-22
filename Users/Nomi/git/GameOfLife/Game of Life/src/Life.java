@@ -1,15 +1,14 @@
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.Scanner;
 import java.io.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
+import javax.swing.*;
+/**
+ * 
+ * @author Nomi
+ *
+ */
 public class Life extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1861382120217385512L;
 	public static int[][] soup;
 	public static int cellSize = 11;
@@ -121,6 +120,4 @@ public class Life extends JPanel {
 			return soup[row][col];
 		return 0;
 	}
-
 }
-
