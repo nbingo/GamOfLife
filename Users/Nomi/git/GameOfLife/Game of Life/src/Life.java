@@ -18,16 +18,16 @@ public class Life extends JPanel {
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
 		JFrame f = new JFrame();
-//		int[][] startSoup = {{0,0,0,0, 0, 0, 0},
-//				{0,1,1,1,0, 0, 0},
-//				{0,0,0,0,0, 0, 0},
-//				{0,0,0,0, 0, 0, 0},
-//				{0,0,0,0, 0, 0, 0},
-//				{0,0,0,0, 1, 1, 0},
-//				{0,0,0,0, 1, 1, 0}};
-//		soup = startSoup;
-//		rows = 7;
-//		columns = 7;
+		//		int[][] startSoup = {{0,0,0,0, 0, 0, 0},
+		//				{0,1,1,1,0, 0, 0},
+		//				{0,0,0,0,0, 0, 0},
+		//				{0,0,0,0, 0, 0, 0},
+		//				{0,0,0,0, 0, 0, 0},
+		//				{0,0,0,0, 1, 1, 0},
+		//				{0,0,0,0, 1, 1, 0}};
+		//		soup = startSoup;
+		//		rows = 7;
+		//		columns = 7;
 		Scanner kboard = new Scanner(System.in);
 		System.out.println("Please input the filename:");
 		String fileName = kboard.nextLine();
@@ -42,11 +42,11 @@ public class Life extends JPanel {
 		f.add(l);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
-		
+
 		while(true)
 		{
 			l.progresses();
-			
+
 			Thread.sleep(100);
 			l.repaint();
 		}
@@ -65,7 +65,7 @@ public class Life extends JPanel {
 					g.fillRect(cellSize*c, cellSize*r, cellSize, cellSize);
 			}
 	}
-	
+
 	// Opens file fileName and puts the soup described inside it into the soup array.
 	// Also sets rows and columns to proper values.
 	public static void readSoup(String fileName) throws FileNotFoundException
@@ -83,7 +83,7 @@ public class Life extends JPanel {
 		}
 		read.close();
 	}
-	
+
 	// Updates the soup according to the rules of Life
 	public void progresses()
 	{
@@ -93,21 +93,19 @@ public class Life extends JPanel {
 			{
 				int surroundingLife = getSurroundingLife(r,c);
 				if(soup[r][c] == 1)									//if the cell is alive
-				{
 					if (surroundingLife < 2 || surroundingLife >= 4)
 						progress[r][c] = 0;
 					else
 						progress[r][c] = 1;
-				}
 				else												//if the cell is dead
-						if (surroundingLife == 3)
-							progress[r][c] = 1;
-						else
-							progress[r][c] = 0;
+					if (surroundingLife == 3)
+						progress[r][c] = 1;
+					else
+						progress[r][c] = 0;
 			}
 		soup = progress;
 	}
-	
+
 	private int getSurroundingLife(int row, int col)
 	{
 		int life = 0;
@@ -116,7 +114,7 @@ public class Life extends JPanel {
 		life += getValue(row,col-1) + getValue(row,col+1);
 		return life;
 	}
-	
+
 	private int getValue(int row, int col)
 	{
 		if (row >= 0 && row < rows && col >= 0 && col < columns)
