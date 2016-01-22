@@ -32,7 +32,7 @@ public class Life extends JPanel {
 		System.out.println("Please input the filename:");
 		String fileName = kboard.nextLine();
 		kboard.close();
-		if (!fileName.endsWith(".soup"))
+		if (!fileName.endsWith(".psp"))
 		{
 			return;
 		}
@@ -74,9 +74,13 @@ public class Life extends JPanel {
 		rows = read.nextInt();
 		columns = read.nextInt();
 		soup = new int[rows][columns];
+		read.nextLine();
 		for (int r = 0; r < rows; r++)
+		{
+			String nextLine = read.nextLine();
 			for (int c = 0; c < columns; c++)
-				soup[r][c] = read.nextInt();
+				soup[r][c] = Integer.parseInt(nextLine.charAt(c) + "");
+		}
 		read.close();
 	}
 	
