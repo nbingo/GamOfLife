@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Scanner;
-
+import java.io.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -15,7 +15,7 @@ public class Life extends JPanel {
 	public static int cellSize = 11;
 	public static int rows;
 	public static int columns;
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
 		JFrame f = new JFrame();
 //		int[][] startSoup = {{0,0,0,0, 0, 0, 0},
@@ -68,15 +68,56 @@ public class Life extends JPanel {
 	
 	// Opens file fileName and puts the soup described inside it into the soup array.
 	// Also sets rows and columns to proper values.
-	public static void readSoup(String fileName)
+	public static void readSoup(String fileName) throws FileNotFoundException
 	{
-		// YOUR CODE HERE
+		Scanner read = new Scanner(new BufferedReader(new FileReader(fileName)));
+		rows = read.nextInt();
+		columns = read.nextInt();
+		soup = new int[rows][columns];
+		for (int r = 0; r < rows; r++)
+			for (int c = 0; c < columns; c++)
+				soup[r][c] = read.nextInt();
+		read.close();
 	}
 	
 	// Updates the soup according to the rules of Life
 	public void progresses()
 	{
-		// YOUR CODE HERE
+		int[][] progress = new int[rows][columns];
+		for (int r = 0; r < rows; r++)
+			for (int c = 0; c < columns; c++)
+			{
+				int surroundingLife = getSurroundingLife(r,c);
+				if(soup[r][c] == 1)									//if the cell is alive
+				{
+					if (surroundingLife < 2 || surroundingLife >= 4)
+						progress[r][c] = 0;
+					else
+						progress[r][c] = 1;
+				}
+				else												//if the cell is dead
+						if (surroundingLife == 3)
+							progress[r][c] = 1;
+						else
+							progress[r][c] = 0;
+			}
+		soup = progress;
+	}
+	
+	private int getSurroundingLife(int row, int col)
+	{
+		int life = 0;
+		for (int c = col-1; c <= col+1; c++)
+			life += getValue(row-1,c) + getValue(row+1,c);
+		life += getValue(row,col-1) + getValue(row,col+1);
+		return life;
+	}
+	
+	private int getValue(int row, int col)
+	{
+		if (row >= 0 && row < rows && col >= 0 && col < columns)
+			return soup[row][col];
+		return 0;
 	}
 
 }
