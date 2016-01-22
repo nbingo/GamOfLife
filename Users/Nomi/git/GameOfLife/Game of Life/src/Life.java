@@ -47,7 +47,7 @@ public class Life extends JPanel {
 		{
 			l.progresses();
 			
-			Thread.sleep(600);
+			Thread.sleep(100);
 			l.repaint();
 		}
 	}
