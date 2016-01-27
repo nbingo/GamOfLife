@@ -21,10 +21,12 @@ public class BattleSoupBuilder
 		{
 			for (int c = 0; c < cols; c++)
 				if((int)(Math.random()+probability)>=1)
-					if ((int)(Math.random()) >= 0.5)
+					if (Math.random() >= 0.5)
 						write.print(2);
 					else
 						write.print(1);
+				else
+					write.print(0);
 			write.println();
 		}
 		k.close();
