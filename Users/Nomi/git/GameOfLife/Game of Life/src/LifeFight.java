@@ -14,7 +14,7 @@ public class LifeFight extends JPanel {
 	 */
 	private static final long serialVersionUID = 6163833510697226749L;
 	public static int[][] soup;
-	public static int cellSize = 11;
+	public static int cellSize = 8;
 	public static int rows;
 	public static int columns;
 	public static void main(String[] args) throws InterruptedException {
@@ -43,7 +43,7 @@ public class LifeFight extends JPanel {
 		{
 			l.progresses();
 			
-			Thread.sleep(100);
+			Thread.sleep(50);
 			l.repaint();
 		}
 	}
@@ -258,9 +258,9 @@ public class LifeFight extends JPanel {
 				{
 					try
 					{
-						if (soup[i][j] == 1)
+						if (soup[i%rows][j%columns] == 1)
 							count[0]++;
-						else if (soup[i][j] == 2)
+						else if (soup[i%rows][j%columns] == 2)
 							count[1]++;
 					}
 					catch (ArrayIndexOutOfBoundsException e) {}
