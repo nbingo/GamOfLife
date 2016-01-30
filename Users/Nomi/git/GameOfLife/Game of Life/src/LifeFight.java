@@ -47,8 +47,11 @@ public class LifeFight extends JPanel {
 			l.repaint();
 		}
 	}
-
-	public void whoWon()
+/**
+ * 
+ * @return the number of the side that won. 0 = left and 1 = right and 2 = tie.
+ */
+	public int whoWon()
 	{
 		int greenTotal = 0;
 		int redTotal = 0;
@@ -84,6 +87,12 @@ public class LifeFight extends JPanel {
 		else
 			winner = "TIE";
 		System.out.println(".....and the winner is: " + winner + "!");
+		if (winner == "GREEN")
+			return 0;
+		else if (winner == "RED")
+			return 1;
+		else
+			return 2;
 	}
 	public void paint(Graphics g)
 	{
