@@ -31,10 +31,10 @@ public class Life extends JPanel {
 		System.out.println("Please input the filename:");
 		String fileName = kboard.nextLine();
 		kboard.close();
-		if (!fileName.endsWith(".psp"))
-		{
-			return;
-		}
+//		if (!fileName.endsWith(".psp"))
+//		{
+//			return;
+//		}
 		readSoup(fileName);
 		f.setSize(1000, 1000);
 		Life l = new Life();
